@@ -15,11 +15,11 @@ Abajo se dispone de todos los links a los proyectos en el Tinkercad, sus explica
 
 ![2](https://github.com/MatiasWolf/SPD/assets/138243033/740c31b9-7c24-4f5d-ba3e-07b60fc63683)
 
---------------------------Parte 3 = https://www.tinkercad.com/things/5JMzziEWGIy ----------------------------------
+--------------------------Parte 3 / MOTOR CC= https://www.tinkercad.com/things/5JMzziEWGIy -------------------------
 
 ![3](https://github.com/MatiasWolf/SPD/assets/138243033/65972cac-b156-4aaf-8e54-73aafe74be13)
 
---------------------------Parte 4 = https://www.tinkercad.com/things/dlmMG9l5IXh ----------------------------------
+--------------------------Parte 4 / SENSOR DE FUERZA= https://www.tinkercad.com/things/dlmMG9l5IXh -----------------
 
 ![4](https://github.com/MatiasWolf/SPD/assets/138243033/e396961a-c5e6-4de1-8574-7966184a5e34)
 
@@ -32,3 +32,13 @@ El principio de funcionamiento basico de un motor de CC se basa en una espira de
 Nuestro grupo pensó en integrar el motor CC de manera que se prenda unicamente cuando el contador sea algún numero múltiplo de 10 y el 0. Asi, a la hora de encender el motor, se prende durante un segundo generando una leve vibracion y alertando al usuario de que llego a tal numero. su borne positivo lo conectamos al pin 12 y su negativo al gnd ,y ademas, los configuramos como salida para su optimo funcionamiento.
 
 .Parte 4 (Sensores): En la parte del proyecto en la que habia que agragar un sensor, optamos por el sensor de fuerza, en la que junto con los dos displays, se logran mostrar 3 fuerzas en equivalencias diferentes. Es decir, que al prender el arduino se muestra en los display la fuerza que se esta ejerciendo en el sensor en kilogramos, si apretamos el interruptor se muestra la lectura del sensor en libras y se apreta otra vez, se muestra en onzas. Si se quiere apretar de nuevo, la fuerza a mostrar vuelve a ser en kilogramos. El sensor tiene limitaciones, y su rango de peso es de 30 gramos a 1 kilogramo. Se puede decir que esta fabricado de dos capas separadas por un espaciador, cuanto mas se preciona mas puntos de elemento activo tocan el semiconductor.
+
+# EXPLICACION PARTE 3 PRIMER PARCIAL
+Según el último número de mi DNI, me tocó integrar al proyecto un fotodiodo, el cual es un dispositivo semiconductor que convierte la luz visible e infrarroja en corriente eléctrica, siendo en palabras mas simples, un sensor de luz que detecta la intensidad de la luz que llega al dispositivo en si.
+Lo integré a mi proyecto, reemplazando el interruptor deslizante, de manera tal que, en vez de mostrar entre los numeros primos o el contador en los displays mediante el interruptor, que lo haga mediante el valor que se almacene en el fotodiodo (lo averiguo mediante un analogRead), siendo que si la intensidad de la luz que llega al fotodiodo es menor a 40, muestre el contador, y por el contrario, muestre los numeros primos.
+
+Su conexión a la placa Arduino es: 
+*El ánodo del fotodiodo va conectado al pin A0
+*El cátodo del mismo va conectado a una resistencia establecida en 1 kilo ohm y luego a GND en la placa Arduino
+
+![Proyecto Primer Parcial SPD](https://github.com/MatiasWolf/SPD/assets/138243033/8cbc22a6-9788-430c-9b2a-cb826feec97e)
