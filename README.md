@@ -8,7 +8,7 @@ Abajo se dispone de todos los links a los proyectos en el Tinkercad, sus explica
 --------------------------Enzo Paredes VEron--------------------------
 # Links Tinkercad
 --------------------------Parte 1 = https://www.tinkercad.com/things/apv1Z6WQKdl ----------------------------------
-
+![imagen_parte_1](![1](https://github.com/MatiasWolf/SPD/assets/138243033/044c52b4-5e7c-4e87-993a-b974a9660d8c)
 --------------------------Parte 2 = https://www.tinkercad.com/things/9FTrGU9f1I2 ----------------------------------
 
 --------------------------Parte 3 = https://www.tinkercad.com/things/5JMzziEWGIy ----------------------------------
