@@ -23,6 +23,8 @@ Abajo se dispone de todos los links a los proyectos en el Tinkercad, sus explica
 
 ![4](https://github.com/MatiasWolf/SPD/assets/138243033/e396961a-c5e6-4de1-8574-7966184a5e34)
 
+--------------------------3ra parte PARCIAL = https://www.tinkercad.com/things/ixABXCQbSQ0 -------------------------
+
 # Explicación Partes 3 y 4
 .Parte 3 (Motor CC): Un motor de corriente continua ("CC" o "DC", por sus iniciales en ingles direct current) es una maquina que convierte energia electrica en mecanica, lo cual provoca un movimiento rotatorio debido a la accion de un campo magnetico.Este mismo esta conformado principalmente por dos partes: 
 *El estátor, el cual es la parte fija/carcasa exterior de la maquina que permite crear un campo magnético. 
