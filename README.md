@@ -25,6 +25,8 @@ Abajo se dispone de todos los links a los proyectos en el Tinkercad, sus explica
 
 --------------------------3ra parte PARCIAL = https://www.tinkercad.com/things/ixABXCQbSQ0 -------------------------
 
+![Proyecto Primer Parcial SPD](https://github.com/MatiasWolf/SPD/assets/138243033/8cbc22a6-9788-430c-9b2a-cb826feec97e)
+
 # Explicación Partes 3 y 4
 .Parte 3 (Motor CC): Un motor de corriente continua ("CC" o "DC", por sus iniciales en ingles direct current) es una maquina que convierte energia electrica en mecanica, lo cual provoca un movimiento rotatorio debido a la accion de un campo magnetico.Este mismo esta conformado principalmente por dos partes: 
 *El estátor, el cual es la parte fija/carcasa exterior de la maquina que permite crear un campo magnético. 
@@ -43,4 +45,3 @@ Su conexión a la placa Arduino es:
 *El ánodo del fotodiodo va conectado al pin A0
 *El cátodo del mismo va conectado a una resistencia establecida en 1 kilo ohm y luego a GND en la placa Arduino
 
-![Proyecto Primer Parcial SPD](https://github.com/MatiasWolf/SPD/assets/138243033/8cbc22a6-9788-430c-9b2a-cb826feec97e)
