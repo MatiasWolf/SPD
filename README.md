@@ -8,15 +8,19 @@ Abajo se dispone de todos los links a los proyectos en el Tinkercad, sus explica
 --------------------------Enzo Paredes VEron--------------------------
 # Links Tinkercad
 --------------------------Parte 1 = https://www.tinkercad.com/things/apv1Z6WQKdl ----------------------------------
+
 ![1](https://github.com/MatiasWolf/SPD/assets/138243033/6e64c535-4e7d-4d15-8a96-83b6bb2b94f2)
 
 --------------------------Parte 2 = https://www.tinkercad.com/things/9FTrGU9f1I2 ----------------------------------
+
 ![2](https://github.com/MatiasWolf/SPD/assets/138243033/740c31b9-7c24-4f5d-ba3e-07b60fc63683)
 
 --------------------------Parte 3 = https://www.tinkercad.com/things/5JMzziEWGIy ----------------------------------
+
 ![3](https://github.com/MatiasWolf/SPD/assets/138243033/65972cac-b156-4aaf-8e54-73aafe74be13)
 
 --------------------------Parte 4 = https://www.tinkercad.com/things/dlmMG9l5IXh ----------------------------------
+
 ![4](https://github.com/MatiasWolf/SPD/assets/138243033/e396961a-c5e6-4de1-8574-7966184a5e34)
 
 # Explicación Partes 3 y 4
