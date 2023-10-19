@@ -5,7 +5,7 @@ Abajo se dispone de todos los links a los proyectos en el Tinkercad, sus explica
 
 --------------------------Matias Gabriel Wolf--------------------------
 
---------------------------Enzo Paredes VEron--------------------------
+--------------------------Enzo Paredes Veron--------------------------
 # Links Tinkercad
 --------------------------Parte 1 = https://www.tinkercad.com/things/apv1Z6WQKdl ----------------------------------
 
