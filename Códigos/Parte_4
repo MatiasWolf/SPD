@@ -1,0 +1,232 @@
+/*En este Proyecto, disponemos de dos Displays, un interruptor y un sensor de fuerza. Al iniciar el proyecto
+la lectura del sensor se puede mostrar en 3 opciones por los Displays, la primera es fuerza en kilogramos,
+la segunda es en libras y la tercera en onzas. llegando asi, a mostrar en diferentes equivalencias de peso en un mismo Display*/
+
+
+//Delcaro los pines
+#define BOTON 4
+#define UNIDAD A4
+#define DECENA A5
+#define A 10
+#define B 11
+#define C 5
+#define D 6
+#define E 7
+#define F 9
+#define G 8  
+#define SENSOR A0
+#define APAGAR 0
+
+//Inicializo unas variables
+int opcion = 0;
+int sube = 1;
+int sumar = 1;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(A, OUTPUT);
+  pinMode(A, OUTPUT);
+  pinMode(B, OUTPUT);
+  pinMode(C, OUTPUT);
+  pinMode(D, OUTPUT);//Los display como salida
+  pinMode(E, OUTPUT);
+  pinMode(F, OUTPUT);
+  pinMode(G, OUTPUT);
+  pinMode(DECENA, OUTPUT);
+  pinMode(UNIDAD, OUTPUT);
+  pinMode(SENSOR, INPUT_PULLUP);//Sensor y Boton como entradas
+  pinMode(BOTON, INPUT_PULLUP);
+
+  digitalWrite(UNIDAD, 0);
+  digitalWrite(DECENA, 0);
+}
+
+void loop() {//Funcion Principal
+  
+  int lectura;//Declaro unas variables
+  int kilogramos, libras, onza;
+  
+  lectura = analogRead(SENSOR);//En la variable lectura guardo el resultado del sensor
+  int apretado = Boton();//En apretado llamo a la funcion Boton para saber si se presiono
+
+  
+  if (apretado == BOTON){//Si el boton se presiona entonces aumento en uno la 
+    opcion++;            //variable opcion
+    if (opcion > 2){
+      opcion = 0;
+     }
+   }
+  
+  switch (opcion){//En el primer caso cuando ocpion vale 0, se muestra por display 
+                  //lo que mide el sensor pero en Kilogramos, en el segundo caso lo 
+    case 0:       // lo muestro en libras y en el tercero el valor es en onzas
+    {
+      kilogramos = (lectura*10)/1023;//hago esta cuenta para obtener la lectura en KG
+      Controlador(kilogramos);//Muestro por los display el valor de Kilogramos
+      break;
+    }
+    case 1:
+    {
+      libras = ((lectura*2.248)/1023)*10;//hago esta cuenta para obtener la lectura en Libras
+      Controlador(libras);//Muestro por los display el valor de Libras
+      break;
+    }  
+    case 2:
+    {
+      onza = (lectura*35.96)/1023;//hago esta cuenta para obtener la lectura en onzas
+      Controlador(onza);//Muestro por los display el valor de Onza
+      break;
+    }  
+   }
+}
+
+
+
+void Controlador(int numero)//en esta funcion se controla el apagado y prendidio
+{                           //de los display y que numero deben mostrar
+  
+  	Prender_Display(APAGAR);//Apago los display
+  	Mostrar(numero/10);//Le mando el numero a mostrar
+  	Prender_Display(DECENA); //Prende el display de decena
+  	Prender_Display(APAGAR);//Apago los display
+  	Mostrar(numero - 10 *((int)numero/10));//Le mando el numero a mostrar
+  	Prender_Display(UNIDAD); //Prende el display de unidad
+}
+
+
+void Prender_Display(int display)//en esta funcion se prende y apaga los Displays
+{
+   if (display == UNIDAD){
+    digitalWrite(UNIDAD, LOW);//Enciende Display Unidad
+  	digitalWrite(DECENA, HIGH);//Apaga Display Decena
+    delay(5);
+   }
+  else if (display == DECENA){
+    digitalWrite(DECENA, LOW);//Enciende el display Decena
+  	digitalWrite(UNIDAD, HIGH);//Apaga el display Unidad
+    delay(5);
+   }
+  else{
+    digitalWrite(UNIDAD, HIGH);//Apaga los dos display
+  	digitalWrite(DECENA, HIGH);
+   }
+}
+  
+void Mostrar(int numero)//En esta funcion Muestro el numero mandado
+{
+  	digitalWrite(A, LOW);
+  	digitalWrite(B, LOW);
+	digitalWrite(C, LOW);//Apago el display por completo
+	digitalWrite(D, LOW);
+	digitalWrite(E, LOW);
+	digitalWrite(F, LOW);
+	digitalWrite(G, LOW);
+  
+    switch (numero) { //Con el Switch declaro cada caso 
+        case 1:
+        {
+        	digitalWrite(B, HIGH);
+            digitalWrite(C, HIGH);
+          	break;  
+        }
+      	case 2:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(B, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(E, HIGH);
+        	digitalWrite(G, HIGH);
+			break;
+        }
+      	case 3:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(B, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(G, HIGH);
+			break;
+        }
+      	case 4:
+        {
+            digitalWrite(B, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(F, HIGH);
+        	digitalWrite(G, HIGH);
+			break;
+        }
+      	case 5:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(F, HIGH);
+        	digitalWrite(G, HIGH);
+			break;
+        }
+    
+    	case 6:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(E, HIGH);
+        	digitalWrite(F, HIGH);
+        	digitalWrite(G, HIGH);
+          	break;
+        }
+      	case 7:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(B, HIGH);
+        	digitalWrite(C, HIGH);
+			break;
+        }
+      	case 8:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(B, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(E, HIGH);
+        	digitalWrite(F, HIGH);
+        	digitalWrite(G, HIGH);
+			break;
+        }
+      	case 9:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(B, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(F, HIGH);
+        	digitalWrite(G, HIGH);
+			break;
+        }
+      	case 0:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(B, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(E, HIGH);
+        	digitalWrite(F, HIGH);
+			break;
+        }
+      }
+}
+
+int Boton(void){
+  
+  	int sumar = digitalRead(BOTON); //Declaro variables para la
+  
+  	if (sumar)//Si sumar es verdadero, es decir, que se esta apretando	
+      sube=1; 
+   	
+  		if(sumar == 0 && sumar != sube)//Este if verifica si el boton se apreto
+        {                            //O se quedo presionado
+        	sube = sumar;
+          	return BOTON;//Devuelve un Sube si se apreto el boton sumar
+        }  
+  return 0;//Si no se apreto nada devuelve un 0 
+}
