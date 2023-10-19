@@ -1,0 +1,278 @@
+//Declaro los pines
+#define SUBE 4
+#define BAJA 3
+#define UNIDAD A4
+#define DECENA A5
+#define A 10       
+#define B 11
+#define C 5
+#define D 6
+#define E 7
+#define F 9
+#define G 8
+#define APAGAR 0
+#define INTERRUPTOR 2
+#define MOTOR 12
+
+//Inicializo los contadores
+int contador = 0;
+int vueltas = 0;
+int primos = 0;
+int sumar=1;
+int sube=1;
+int restar=1;
+int baja=1;
+
+
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(SUBE, INPUT_PULLUP);
+  pinMode(BAJA, INPUT_PULLUP);
+  pinMode(INTERRUPTOR, INPUT_PULLUP);
+  pinMode(A, OUTPUT); 
+  pinMode(B, OUTPUT);
+  pinMode(C, OUTPUT);
+  pinMode(D, OUTPUT);//Establesco los pines A a G como salidas
+  pinMode(E, OUTPUT);
+  pinMode(F, OUTPUT);
+  pinMode(G, OUTPUT);
+  pinMode(DECENA, OUTPUT);
+  pinMode(UNIDAD, OUTPUT);
+  pinMode(MOTOR, OUTPUT);
+  
+  digitalWrite(UNIDAD, 0);
+  digitalWrite(DECENA, 0);
+  Controlador(0);//Inicializo Los display en 0
+}
+
+void loop()//Funcion Principal
+{
+  
+  if (digitalRead(INTERRUPTOR) == LOW) {
+    
+      int presionado = Boton();//Llamo a la funcion Boton y veo
+                               //cual se esta presionando
+
+      if (presionado == SUBE) {//Si presiono el boton de sumar
+        contador++;      //aumenta en 1 el contador
+        if (contador > 99){
+          contador = 0;
+        }
+        if (contador % 10 == 0){
+           digitalWrite(MOTOR, HIGH);//Prendo el motor
+    	   delay(1000);  // Activa el motor durante 1 segundo
+   		   digitalWrite(MOTOR, LOW);//Apago el motor    
+         }
+       }
+
+      if (presionado == BAJA) {//Si presiono el boton de restar
+        contador--;       //resto en 1 el contador
+        if (contador < 0){//si el contador es menor a 0, el contador
+          contador = 99;  //se le da el valor de 99
+        }
+       }
+
+      Controlador(contador);//Llamo a la funcion Controlador
+    
+    }else
+    {
+      vueltas ++;
+      if (vueltas > 50){
+          primos = NumeroPrimo(primos);  // Encuentra el siguiente número primo
+          vueltas = 0;
+          if (primos > 99){//si la variable primos supera el valor 99
+            primos = 0;    // se reinicia a 0
+          }
+        }
+    	Controlador(primos); //Llama a la funcio controlador para que se muestre el numero
+	 }
+  }
+
+
+void Controlador(int numero)//en esta funcion se controla el apagado y prendidio
+{                           //de los display y que numero deben mostrar
+  
+  	Prender_Display(APAGAR);//Apago los display
+  	Mostrar(numero/10);//Le mando el numero a mostrar
+  	Prender_Display(DECENA); //Prende el display de decena
+  	Prender_Display(APAGAR);//Apago los display
+  	Mostrar(numero - 10 *((int)numero/10));//Le mando el numero a mostrar
+  	Prender_Display(UNIDAD); //Prende el display de unidad
+}
+
+
+void Prender_Display(int display)//En esta funcion prende y apago los Displays
+{
+   if (display == UNIDAD){
+    digitalWrite(UNIDAD, LOW);//Enciende Display Unidad
+  	digitalWrite(DECENA, HIGH);//Apaga Display Decena
+    delay(5);
+   }
+  else if (display == DECENA){
+    digitalWrite(DECENA, LOW);//Enciende el display Decena
+  	digitalWrite(UNIDAD, HIGH);//Apaga el display Unidad
+    delay(5);
+   }
+  else{
+    digitalWrite(UNIDAD, HIGH);//Apaga los dos display
+  	digitalWrite(DECENA, HIGH);
+   }
+}
+  
+void Mostrar(int numero)//En esta funcion Muestro el numero mandado
+{
+  	digitalWrite(A, LOW);
+  	digitalWrite(B, LOW);
+	digitalWrite(C, LOW);//Apago el display por completo
+	digitalWrite(D, LOW);
+	digitalWrite(E, LOW);
+	digitalWrite(F, LOW);
+	digitalWrite(G, LOW);
+  
+    switch (numero) { //Con el Switch declaro cada caso 
+        case 1:
+        {
+        	digitalWrite(B, HIGH);
+            digitalWrite(C, HIGH);
+          	break;  
+        }
+      	case 2:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(B, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(E, HIGH);
+        	digitalWrite(G, HIGH);
+			break;
+        }
+      	case 3:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(B, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(G, HIGH);
+			break;
+        }
+      	case 4:
+        {
+            digitalWrite(B, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(F, HIGH);
+        	digitalWrite(G, HIGH);
+			break;
+        }
+      	case 5:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(F, HIGH);
+        	digitalWrite(G, HIGH);
+			break;
+        }
+    
+    	case 6:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(E, HIGH);
+        	digitalWrite(F, HIGH);
+        	digitalWrite(G, HIGH);
+          	break;
+        }
+      	case 7:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(B, HIGH);
+        	digitalWrite(C, HIGH);
+			break;
+        }
+      	case 8:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(B, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(E, HIGH);
+        	digitalWrite(F, HIGH);
+        	digitalWrite(G, HIGH);
+			break;
+        }
+      	case 9:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(B, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(F, HIGH);
+        	digitalWrite(G, HIGH);
+			break;
+        }
+      	case 0:
+        {
+            digitalWrite(A, HIGH);
+        	digitalWrite(B, HIGH);
+        	digitalWrite(C, HIGH);
+        	digitalWrite(D, HIGH);
+        	digitalWrite(E, HIGH);
+        	digitalWrite(F, HIGH);
+			break;
+        }
+      }
+}
+
+int Boton(void){
+  
+  	int sumar = digitalRead(SUBE); //Declaro variables para la
+  	int restar = digitalRead(BAJA);//accion de cada boton
+
+  	if (sumar)//Si sumar es verdadero, es decir, que se esta apretando	
+      sube=1; 
+  	if (restar)//Si restar es verdadero, es decir, que se esta apretando	
+      baja=1;
+  	
+  		if(sumar==0 && sumar != sube)//Este if verifica si el boton se apreto
+        {                            //O se quedo presionado
+        	sube = sumar;
+          	return SUBE;//Devuelve un Sube si se apreto el boton sumar
+        }
+  		if(restar==0 && restar != baja)//Este if verifica si el boton se apreto
+        {                              //O se quedo presionado
+        	baja = restar;
+          	return BAJA;
+        }
+  
+  return 0;//Si no se apreto nada devuelve un 0 
+  
+}
+
+  
+int NumeroPrimo(int numero) {//A esta funcion le llega como parametro el valor 0 y esta busca el proximo 
+  							 //numero primo y lo retorna, luego le llega de parametro el ultimo numero primo
+                             //que retorno y vuelva a buscar el numero primo que le sigue
+  while (true) {
+      bool verdad = true;
+      numero++;
+    
+      if (numero <= 1) {//si el numero es menor o igual a 1 no es primo
+          verdad = false;
+      }
+
+      for (int i = 2; i <= sqrt(numero); i++) {
+          if (numero % i == 0) {//Si num es divisible por i, entonces no es primo
+              verdad = false;
+          }
+      }
+      if (verdad == true){//En el caso de comprobar que el numero si es primo, rompe el while
+        Serial.println("Salio del while");//con un break y retorna el numero 
+        Serial.println(numero);
+        break;     
+       }
+   }
+   return numero;
+}
+  
